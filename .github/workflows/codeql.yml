@@ -95,8 +95,9 @@ jobs:
       run: |
           sudo apt-get update
           sudo apt-get install -y bison flex
+          
           make defconfig || echo "make defconfig failed"
-          make -j$(nproc)
+          make NO_SDL=1 -j$(nproc)
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
