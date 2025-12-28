@@ -17,7 +17,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    - cron: '5 * * * 0'
+    - cron: '09 17 * * * 0'
 
 jobs:
   analyze:
@@ -97,7 +97,7 @@ jobs:
           sudo apt-get install -y bison flex
           
           make defconfig || echo "make defconfig failed"
-          make NO_SDL=1 -j$(nproc)
+          make NO_SDL=1 NO_DTC=1 -j$(nproc)
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
